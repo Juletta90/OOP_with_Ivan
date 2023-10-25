@@ -80,6 +80,8 @@ for num in split_string:
 num_set_sorted = sorted(num_set)
 print(num_set_sorted)
 
+print()
+print()
 #_________________________________________________
 
 # Функция-упаковщик zip() принимает в качестве аргументов итерируемые объекты,
@@ -99,6 +101,8 @@ movies_info = zip(movies, movie_ratings)
 for films in movies_info:
     print(films)
 
+print()
+print()
 #_______________________________________________
 
 
@@ -115,6 +119,7 @@ hackers = movies['Хакеры']
 print(hackers['rating'], hackers['review'])
 
 
+print()
 print()
 #_______________________________________________
 
@@ -143,20 +148,19 @@ recommended_movies = {
     'Мстители': {'rating': 4.7, 'review': 'Фильм крут'},
     'Хакеры':  {'rating': 4.5, 'review': 'Смотреть можно'}
 }
+recommended_movies_copy = recommended_movies.copy()
+
 
 # место для вашего кода
-for movie, rating in recommended_movies.items():
-    if rating < str(4):
-        print(f'Фильм {movie} не интересен: {review}. Фильм удалён из рекомендаций. ')
-    rating_review = recommended_movies.get(movie)   # Вывод в терминал: {'rating': 4.5, 'review': 'Смотреть можно'}
-    #print(rating_review)
-
-
-    for name, review in rating_review.items():
-        print(f'Фильм {movie} не интересен: {review}')
-
-
-
-
+for movie, info in recommended_movies.items():
+    rating = info['rating']  # обращение к элементу словаря по ключу - передаст в переменную rating = 4.5, 4.7 ...
+    review = info['review']  # обращение к элементу словаря по ключу - передаст в переменную review = 'Фильм крут', ...
+    for value in info.values():
+        if rating < 4.0:
+            print(f'Фильм {movie} не интересен: {review}. Фильм удалён из рекомендаций.')
+    del recommended_movies_copy[movie]
+    if rating > 4.0:
+        favorite_movies[movie] = rating
+        print(f'У фильма {movie} хороший отзыв: {review}. Фильм добавлен в избранное.')
 
 print(favorite_movies)
