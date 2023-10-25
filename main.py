@@ -53,6 +53,8 @@ str_to_set_2 = num_string_2.split()
 num_string_3 = set(str_to_set_1) & set(str_to_set_2)
 print(len(num_string_3))
 
+print()
+print()
 #______________________________________________
 
 # Антон получил в ответ от сервера перечень ID клиентов в виде строки,
